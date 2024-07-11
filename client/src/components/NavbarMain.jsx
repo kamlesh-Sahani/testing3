@@ -29,7 +29,7 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
 import { useNavigate } from "react-router-dom";
- 
+
 const navListMenuItems = [
   {
     title: "Products",
@@ -77,41 +77,38 @@ const navListMenuItems = [
     icon: TagIcon,
   },
 ];
- 
+
 function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const renderItems = navListMenuItems.map(
     ({ icon, title, description }, key) => (
-      <a href="#" key={key}>
-        <MenuItem className="flex items-center gap-3 rounded-lg">
-          <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
-            {" "}
-            {React.createElement(icon, {
-              strokeWidth: 2,
-              className: "h-6 text-gray-900 w-6",
-            })}
-          </div>
-          <div>
-            <Typography
-              variant="h6"
-              color="blue-gray"
-              className="flex items-center text-sm font-bold"
-            >
-              {title}
-            </Typography>
-            <Typography
-              variant="paragraph"
-              className="text-xs !font-medium text-blue-gray-500"
-            >
-              {description}
-            </Typography>
-          </div>
-        </MenuItem>
-      </a>
-    ),
+      <MenuItem key={key} className="flex items-center gap-3 rounded-lg">
+        <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2">
+          {React.createElement(icon, {
+            strokeWidth: 2,
+            className: "h-6 text-gray-900 w-6",
+          })}
+        </div>
+        <div>
+          <Typography
+            variant="h6"
+            color="blue-gray"
+            className="flex items-center text-sm font-bold"
+          >
+            {title}
+          </Typography>
+          <Typography
+            variant="paragraph"
+            className="text-xs !font-medium text-blue-gray-500"
+          >
+            {description}
+          </Typography>
+        </div>
+      </MenuItem>
+    )
   );
- 
+
   return (
     <React.Fragment>
       <Menu
@@ -156,54 +153,49 @@ function NavListMenu() {
     </React.Fragment>
   );
 }
- 
+
 function NavList() {
   return (
     <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
-      <Typography
+      <ListItem
         as="a"
         href="/"
-        variant="small"
-        color="blue-gray"
-        className="font-medium"
+        className="flex items-center gap-2 py-2 pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+        style={{ fontSize: "1.2rem" }}
       >
-        <ListItem className="flex items-center gap-2 py-2 pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" style={{fontSize:'1.2rem'}}>Home</ListItem>
-      </Typography>
-      <Typography
+        Home
+      </ListItem>
+      <ListItem
         as="a"
         href="/about"
-        variant="small"
-        color="blue-gray"
-        className="font-medium"
+        className="flex items-center gap-2 py-2 pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+        style={{ fontSize: "1.2rem" }}
       >
-        <ListItem className="flex items-center gap-2 py-2 pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" style={{fontSize:'1.2rem'}}>About</ListItem>
-      </Typography>
+        About
+      </ListItem>
       {/* <NavListMenu /> */}
-      <Typography
+      <ListItem
         as="a"
         href="/contact"
-        variant="small"
-        color="blue-gray"
-        className="font-medium"
+        className="flex items-center gap-2 py-2 pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+        style={{ fontSize: "1.2rem" }}
       >
-        <ListItem className="flex items-center gap-2 py-2 pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" style={{fontSize:'1.2rem'}}>
-          Contact Us
-        </ListItem>
-      </Typography>
+        Contact Us
+      </ListItem>
     </List>
   );
 }
- 
- function NavbarBarMain() {
+
+function NavbarBarMain() {
   const [openNav, setOpenNav] = React.useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   React.useEffect(() => {
     window.addEventListener(
       "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false),
+      () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
- 
+
   return (
     <Navbar className="mx-auto max-w-screen-xl px-4 py-2">
       <div className="flex items-center justify-between text-blue-gray-900">
@@ -213,19 +205,37 @@ function NavList() {
           variant="h6"
           className="mr-4 cursor-pointer py-1.5 lg:ml-2"
         >
-           <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">E-Learning</span>
-        </a>
+          <a
+            href="#"
+            className="flex items-center space-x-3 rtl:space-x-reverse"
+          >
+            <img
+              src="https://flowbite.com/docs/images/logo.svg"
+              className="h-8"
+              alt="Flowbite Logo"
+            />
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              E-Learning
+            </span>
+          </a>
         </Typography>
         <div className="hidden lg:block">
           <NavList />
         </div>
 
         <div className="hidden gap-2 lg:flex">
-       
-          <a href="/login" className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Login</a>
-            <a href="/ask" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 "  >Sign up</a>
+          <a
+            href="/login"
+            className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+          >
+            Login
+          </a>
+          <a
+            href="/ask"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 "
+          >
+            Sign up
+          </a>
         </div>
         {/* <IconButton
           variant="text"
@@ -233,29 +243,43 @@ function NavList() {
           className="lg:hidden"
           onClick={() => setOpenNav(!openNav)}
         > */}
-           <button data-collapse-toggle="mega-menu" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu" aria-expanded="false"
-           onClick={() => setOpenNav(!openNav)}>
-             {openNav ? (
+        <button
+          data-collapse-toggle="mega-menu"
+          type="button"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="mega-menu"
+          aria-expanded="false"
+          onClick={() => setOpenNav(!openNav)}
+        >
+          {openNav ? (
             <XMarkIcon className="h-6 w-6" strokeWidth={2} />
           ) : (
             <Bars3Icon className="h-6 w-6" strokeWidth={2} />
           )}
+        </button>
 
-           </button>
-          
-        
         {/* </IconButton> */}
       </div>
       <Collapse open={openNav}>
         <NavList />
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-        <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-        <a href="/login" className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Login</a>
-            <a href="/ask" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 "  >Sign up</a>
-        </div>
+          <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
+            <a
+              href="/login"
+              className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+            >
+              Login
+            </a>
+            <a
+              href="/ask"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 "
+            >
+              Sign up
+            </a>
+          </div>
         </div>
       </Collapse>
     </Navbar>
   );
 }
-export default NavbarBarMain
+export default NavbarBarMain;

@@ -1,24 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-import('preline')
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
 import { ThemeProvider } from "@material-tailwind/react";
-import AppContext from './Context';
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import AppContext from "./Context";
+import { BrowserRouter as Router } from "react-router-dom";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <BrowserRouter>
-    <ThemeProvider>
+  <ThemeProvider>
+    <Router>
       <AppContext>
-
-      <App />
+        <App />
       </AppContext>
-    </ThemeProvider>
-    </BrowserRouter>
-    
+    </Router>
+  </ThemeProvider>
 );
-
-

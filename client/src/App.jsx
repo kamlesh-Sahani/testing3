@@ -40,13 +40,6 @@ import Success from "./components/Success";
 import Cancel from "./components/Cancel";
 
 function App() {
-  useEffect(()=>{
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate('/login');
-      return;
-    }
-  },[])
   return (
       <Routes>
         <Route path="/" element={<LandingPage />} />

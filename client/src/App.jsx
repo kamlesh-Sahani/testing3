@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -40,6 +40,13 @@ import Success from "./components/Success";
 import Cancel from "./components/Cancel";
 
 function App() {
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+  },[])
   return (
       <Routes>
         <Route path="/" element={<LandingPage />} />
